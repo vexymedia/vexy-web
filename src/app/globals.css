@@ -1,8 +1,30 @@
 @import "tailwindcss";
 
+/*
+ * Tokens taken from the live vexylabs.cz capture in .reference/.
+ * The live site is a Konverzky (Bootstrap 4) page, so the breakpoints and the
+ * container widths below mirror Bootstrap 4 rather than Tailwind defaults —
+ * that is what the captured `col-md-*` / `fs-lg-*` classes are written against.
+ */
 @theme {
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+
+  /* Both faces are loaded by next/font in layout.tsx. */
+  --font-heading: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Greens, as resolved on the live page. */
+  --color-brand: #25b061; /* rgb(37, 176, 97)  – "Co za vás převezmeme" band */
+  --color-brand-button: #30a05c; /* rgb(48, 160, 92) – primary CTA */
+  --color-brand-accent: #08ab13; /* hero headline highlight */
+
+  --color-ink: #212529;
+  --color-hero-fallback: #e6e6e6; /* rgb(230, 230, 230) behind the hero image */
+  --color-video-border: #48535e; /* rgb(72, 83, 94) */
 }
 
 html {
@@ -11,4 +33,127 @@ html {
 
 body {
   font-family: var(--font-sans);
+  color: var(--color-ink);
+  overflow-x: hidden;
+}
+
+/* Bootstrap 4 container widths — the live layout is built on them. */
+.container-v2 {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 15px;
+}
+@media (min-width: 576px) {
+  .container-v2 {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .container-v2 {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container-v2 {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container-v2 {
+    max-width: 1140px;
+  }
+}
+
+/* `py-4` on every column of the live page. */
+.col-v2 {
+  padding-block: 1.5rem;
+}
+
+/*
+ * Check list (`<ul list-style="check">` on the live page).
+ * Icon box is 16px wide, items are separated by 0.5em.
+ */
+.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+.check-list > li {
+  position: relative;
+  padding-left: 26px;
+  margin-bottom: 0.5em;
+  letter-spacing: 0.2px;
+}
+.check-list > li:last-child {
+  margin-bottom: 0;
+}
+.check-list > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.42em;
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-brand-button);
+  -webkit-mask: var(--check-mask) center / contain no-repeat;
+  mask: var(--check-mask) center / contain no-repeat;
+}
+.check-list {
+  --check-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M173.9 439.4 7.5 273a25.6 25.6 0 0 1 0-36.2l36.2-36.2a25.6 25.6 0 0 1 36.2 0L192 312.7 432.1 72.6a25.6 25.6 0 0 1 36.2 0l36.2 36.2a25.6 25.6 0 0 1 0 36.2l-294.4 294.4a25.6 25.6 0 0 1-36.2 0z'/%3E%3C/svg%3E");
+}
+
+/*
+ * Primary CTA. The live button is `.btn-primary.btn-3d`: flat green, 3px
+ * radius, a solid darker edge underneath, and a Font Awesome arrow on the
+ * right (reproduced here as an inline glyph so no icon font is needed).
+ */
+.btn-vexy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75em;
+  background-color: var(--color-brand-button);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 3px;
+  padding: 13px 47px;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1.3;
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--color-brand-button) 78%, #000);
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background-color 0.12s ease;
+}
+.btn-vexy:hover {
+  background-color: color-mix(in srgb, var(--color-brand-button) 92%, #fff);
+}
+.btn-vexy:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--color-brand-button) 78%, #000);
+}
+.btn-vexy > .btn-vexy-arrow {
+  flex: none;
+  width: 0.75em;
+  height: 0.75em;
+}
+
+/* Hero band: background photo over the captured flat fallback colour. */
+.hero-band {
+  background-color: var(--color-hero-fallback);
+  background-image: var(--hero-image);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/*
+ * Until the hero photo is imported there is nothing behind the headline, and
+ * the live page's flat fallback (#e6e6e6) leaves white text unreadable. Stand
+ * in a dark ground so the section still reads; drop this class once the real
+ * image is in place.
+ */
+.hero-band--placeholder {
+  background-color: #2f3a45;
 }

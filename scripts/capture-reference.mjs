@@ -22,9 +22,19 @@ const OUT = ".reference";
 const TARGET = process.env.TARGET ?? "https://vexylabs.cz/";
 const EXEC = process.env.CHROMIUM ?? "/opt/pw-browsers/chromium";
 
+// Outbound HTTPS in this environment goes through an agent proxy; Chromium
+// does not read the proxy environment variables on its own.
+const PROXY = process.env.HTTPS_PROXY ?? process.env.https_proxy;
+
 mkdirSync(`${OUT}/assets`, { recursive: true });
 
-const browser = await chromium.launch({ executablePath: EXEC });
+const browser = await chromium.launch({
+  executablePath: EXEC,
+  ...(PROXY ? { proxy: { server: PROXY } } : {}),
+  // The proxy re-terminates TLS and resets Chromium's TLS 1.3 handshake
+  // (the split ClientHello); capping at 1.2 keeps verification intact.
+  args: PROXY ? ["--ssl-version-max=tls1.2"] : [],
+});
 
 const collectAssets = (page) => {
   const seen = new Set();
