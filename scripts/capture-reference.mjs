@@ -10,7 +10,8 @@
  * network policy, and Playwright available:
  *
  *   npm i --no-save playwright
- *   TARGET=https://vexylabs.cz/ node scripts/capture-reference.mjs
+ *   node scripts/capture-reference.mjs            # defaults to vexylabs.cz
+ *   TARGET=https://example.com/ node scripts/capture-reference.mjs
  *
  * Output goes to .reference/ (git-ignored).
  */
@@ -18,7 +19,7 @@ import { chromium } from "playwright";
 import { mkdirSync, writeFileSync } from "node:fs";
 
 const OUT = ".reference";
-const TARGET = process.env.TARGET ?? "https://vexy.cz/";
+const TARGET = process.env.TARGET ?? "https://vexylabs.cz/";
 const EXEC = process.env.CHROMIUM ?? "/opt/pw-browsers/chromium";
 
 mkdirSync(`${OUT}/assets`, { recursive: true });

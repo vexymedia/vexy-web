@@ -23,3 +23,17 @@ npm run lint    # ESLint
 src/app/        App Router – layout, stránky, globální styly
 public/         statická aktiva
 ```
+
+## Referenční podklad
+
+Baseline webu se staví podle současného veřejného webu na **vexylabs.cz**.
+Podklad stáhne dev utilita (vyžaduje povolený egress na doménu):
+
+```bash
+npm i --no-save playwright
+node scripts/capture-reference.mjs
+```
+
+Uloží do `.reference/` (git-ignored) HTML, CSS, fonty a obrázky, skutečně
+použité barvy/typografii/rozestupy z computed stylů a full-page screenshoty
+v 1440 px a 390 px.
