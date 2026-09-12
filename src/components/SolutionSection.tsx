@@ -18,9 +18,9 @@ export function SolutionSection() {
           />
         </div>
         <div className="col col-md-half">
-          <h1 className="-mt-1.5 font-heading text-[23px] leading-[1.25] font-bold lg:text-[38px]">
+          <h2 className="-mt-1.5 font-heading text-[23px] leading-[1.25] font-bold lg:text-[38px]">
             {solution.heading}
-          </h1>
+          </h2>
           <CheckList
             items={solution.items}
             lineHeightClass="lg:leading-[1.8]"

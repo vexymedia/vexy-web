@@ -42,12 +42,17 @@ max 1140 px, 15px gutter, sloupce `py-4` (24 px). Tailwind breakpointy jsou
 srovnané s Bootstrapem, takže `md:` = 768 px a `lg:` = 992 px odpovídají
 původním `col-md-*` a `fs-lg-*`.
 
-### Obrázky
+### Obrázky – deployment blocker
 
-Obrázky se zatím načítají z původní CDN page builderu (viz `src/data/assets.ts`),
-protože tento build prostředí nemá k doméně `assets.konverzkyapp.cz` přístup.
-Pro self-hosting stačí soubory nahrát do `public/images/` a v `assets.ts`
-přepsat hodnoty na `/images/<soubor>` – nic jiného se nemění.
+**Obrázky zatím nejsou self-hostované.** Načítají se z původní CDN page
+builderu (viz `src/data/assets.ts`), protože `assets.konverzkyapp.cz`
+i `app-assets.konverzkyapp.cz` jsou blokované egress policy tohoto prostředí
+(403 na CONNECT; `www.vexylabs.cz/data/...` jen přesměruje na tutéž doménu).
+Web tak závisí na cizí CDN a na tom, že nezakáže hotlinking.
+
+Před produkčním nasazením je potřeba assety stáhnout ručně, nahrát je do
+`public/images/` a v `src/data/assets.ts` přepsat hodnoty na `/images/<soubor>`.
+Nic jiného se nemění.
 
 ## Referenční podklad
 

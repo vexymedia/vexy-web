@@ -10,9 +10,9 @@ export function ServicesSection() {
     >
       <div className="row">
         <div className="col">
-          <h1 className="-mt-1.5 text-center font-heading text-[23px] leading-[1.25] font-bold text-white lg:text-[38px]">
+          <h2 className="-mt-1.5 text-center font-heading text-[23px] leading-[1.25] font-bold text-white lg:text-[38px]">
             {services.heading}
-          </h1>
+          </h2>
         </div>
       </div>
 
@@ -27,9 +27,9 @@ export function ServicesSection() {
               style={{ width: item.iconWidth }}
               className="mx-auto mt-5 block max-w-full"
             />
-            <h1 className="mt-2 text-center font-heading text-[23px] leading-[1.25] font-medium text-white lg:text-[31px]">
+            <h3 className="mt-2 text-center font-heading text-[23px] leading-[1.25] font-medium text-white lg:text-[31px]">
               {item.title}
-            </h1>
+            </h3>
           </div>
         ))}
       </div>
