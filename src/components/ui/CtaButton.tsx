@@ -18,7 +18,7 @@ export function CtaButton({ align = "center", className = "" }: CtaButtonProps) 
     >
       <a
         href={cta.href}
-        className="inline-flex items-center gap-3 rounded-[3px] bg-brand-button px-[47px] py-[13px] text-center text-[16px] font-bold text-white transition-opacity hover:opacity-90 lg:text-[24px]"
+        className="inline-flex items-center gap-3 rounded-[3px] bg-brand-button px-6 py-[13px] lg:px-[47px] text-center text-[16px] font-bold text-white transition-opacity hover:opacity-90 lg:text-[24px]"
       >
         <span>{cta.label}</span>
         <ArrowRightIcon className="h-[0.8em] w-[0.8em] shrink-0" />

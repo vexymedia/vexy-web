@@ -8,7 +8,7 @@ export function CaseStudiesSection() {
     <Section>
       <div className="row">
         <div className="col">
-          <h1 className="text-center font-heading text-[30px] leading-[1.25] font-normal lg:text-[38px] lg:leading-[38px]">
+          <h1 className="text-center font-heading text-[30px] leading-[1.25] font-bold lg:text-[38px] lg:leading-[38px]">
             {caseStudies.heading}
           </h1>
         </div>

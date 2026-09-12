@@ -20,9 +20,34 @@ npm run lint    # ESLint
 ## Struktura
 
 ```
-src/app/        App Router – layout, stránky, globální styly
-public/         statická aktiva
+src/app/page.tsx          pořadí sekcí stránky
+src/app/layout.tsx        fonty (Poppins, Inter), metadata
+src/app/globals.css       barvy, breakpointy, mřížka (.site-container/.row/.col)
+src/components/           jedna komponenta = jedna sekce webu
+src/components/ui/        znovupoužitelné prvky (CtaButton, CheckList, VideoEmbed, Section)
+src/data/content.ts       veškeré texty
+src/data/assets.ts        URL všech obrázků
+public/                   statická aktiva
 ```
+
+### Jak dělat časté úpravy
+
+- **Text, CTA, čísla v případovkách** → `src/data/content.ts`
+- **Pořadí nebo odebrání sekcí** → `src/app/page.tsx`
+- **Výměna obrázku** → `src/data/assets.ts`
+- **Barvy a breakpointy** → blok `@theme` v `src/app/globals.css`
+
+Mřížka kopíruje Bootstrap 4, na kterém běží současný vexylabs.cz: container
+max 1140 px, 15px gutter, sloupce `py-4` (24 px). Tailwind breakpointy jsou
+srovnané s Bootstrapem, takže `md:` = 768 px a `lg:` = 992 px odpovídají
+původním `col-md-*` a `fs-lg-*`.
+
+### Obrázky
+
+Obrázky se zatím načítají z původní CDN page builderu (viz `src/data/assets.ts`),
+protože tento build prostředí nemá k doméně `assets.konverzkyapp.cz` přístup.
+Pro self-hosting stačí soubory nahrát do `public/images/` a v `assets.ts`
+přepsat hodnoty na `/images/<soubor>` – nic jiného se nemění.
 
 ## Referenční podklad
 
