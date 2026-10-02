@@ -1017,42 +1017,49 @@ body{margin:0}
   if (source) {
     placeholder.hidden = true;
     $('.video-preview-badge').hidden = true;
-    launch.hidden = false;
-    const poster = $('#video-poster');
-    if (typeof config.videoPoster === 'string' && config.videoPoster.trim()) {
-      try {
-        const p = new URL(config.videoPoster, window.location.href);
-        if (p.protocol === 'https:' || p.origin === window.location.origin || (p.protocol === 'file:' && window.location.protocol === 'file:')) {
-          poster.src = p.href; poster.hidden = false;
-          poster.addEventListener('error', () => {poster.hidden=true;}, {once:true});
-        }
-      } catch (_) { /* Invalid poster: keep the original grid background. */ }
-    }
-    launch.addEventListener('click', () => {
+
+    if (source.type === 'embed') {
+      // Render YouTube/Vimeo/Loom immediately so the provider shows its own native thumbnail/player UI.
       launch.hidden = true;
       $('.vsl-top').hidden = true;
       mount.hidden = false;
-      if (source.type === 'file') {
-        const video = document.createElement('video');
-        video.controls = true; video.playsInline = true; video.preload = 'metadata';
-        video.setAttribute('aria-label','VEXY calling engine video');
-        video.src=source.url;
-        if (poster.src) video.poster=poster.src;
-        video.addEventListener('error', () => {
-          const message = document.createElement('p');
-          message.className='video-status';message.textContent='The video could not be loaded. Please check the configured video file.';
-          mount.appendChild(message);
-        },{once:true});
-        mount.appendChild(video);
-        video.play().catch(() => { /* Native controls remain available. */ });
-      } else {
-        const iframe = document.createElement('iframe');
-        iframe.src=source.url;iframe.title='VEXY — Calling engine breakdown';
-        iframe.allow='autoplay; fullscreen; encrypted-media; picture-in-picture';
-        iframe.allowFullscreen=true;iframe.referrerPolicy='strict-origin-when-cross-origin';
-        mount.appendChild(iframe);
+
+      const iframe = document.createElement('iframe');
+      iframe.src = source.url;
+      iframe.title = 'VEXY — Calling engine breakdown';
+      iframe.allow = 'accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen';
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      mount.appendChild(iframe);
+    } else {
+      // Keep click-to-play behavior only for direct video files.
+      launch.hidden = false;
+      const poster = $('#video-poster');
+      if (typeof config.videoPoster === 'string' && config.videoPoster.trim()) {
+        try {
+          const p = new URL(config.videoPoster, window.location.href);
+          if (p.protocol === 'https:' || p.origin === window.location.origin || (p.protocol === 'file:' && window.location.protocol === 'file:')) {
+            poster.src = p.href; poster.hidden = false;
+            poster.addEventListener('error', () => {poster.hidden=true;}, {once:true});
+          }
+        } catch (_) {}
       }
-    }, {once:true});
+
+      launch.addEventListener('click', () => {
+        launch.hidden = true;
+        $('.vsl-top').hidden = true;
+        mount.hidden = false;
+        const video = document.createElement('video');
+        video.controls = true;
+        video.playsInline = true;
+        video.preload = 'metadata';
+        video.setAttribute('aria-label','VEXY calling engine video');
+        video.src = source.url;
+        if (poster.src) video.poster = poster.src;
+        mount.appendChild(video);
+        video.play().catch(() => {});
+      }, {once:true});
+    }
   } else if (config.videoUrl) {
     $('#video-status').textContent='Development preview — the configured video URL needs a supported embed or video-file URL.';
   }
