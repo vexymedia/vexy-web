@@ -172,3 +172,20 @@
 @media(max-width:900px){.vx .fit-compact{align-items:flex-start;gap:24px}.vx .fit-criteria{gap:12px 18px}.cs-calculator-grid{gap:32px}}
 @media(max-width:767px){.vx .fit-compact{flex-direction:column;gap:14px;padding-top:20px;padding-bottom:20px}.vx .fit-compact-title{font-size:17px;max-width:420px}.vx .fit-criteria{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 24px;justify-content:start}.vx .fit-criteria li{font-size:12px}.vx .case-section{padding:46px 0}.vx .case-cover,.vx .case-summary{padding:26px}.vx .case-cover h3{font-size:32px}.vx .case-card-title{font-size:28px}.vx .final{padding-top:46px}.vx .final .lead{font-size:16px}.cs-calculator{padding:46px 0}.cs-calculator-grid{grid-template-columns:1fr;gap:28px}.cs-calculator-intro>p{font-size:17px}.cs-value-calc{padding:22px}.cs-value-label output{font-size:20px}.cs-monthly th,.cs-monthly td{padding:12px 16px}}
 @media(max-width:359px){.vx .case-cover,.vx .case-summary{padding:22px}.cs-value-label{flex-direction:column;gap:8px}}
+
+/* Three compact campaign cards keep the examples together on the landing page. */
+.vx .case-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
+.vx .case-card-grid .case-card{display:flex;flex-direction:column}
+.vx .case-card-grid .case-cover{padding:26px;gap:14px;justify-content:flex-start;min-height:180px}
+.vx .case-card-grid .case-cover h3{font-size:26px;margin:0;line-height:1.15}
+.vx .case-card-grid .case-summary{padding:26px;gap:16px;justify-content:flex-start;flex:1}
+.vx .case-card-grid .case-card-title{font-size:28px}
+.vx .case-card-grid .case-description{font-size:16px;line-height:1.55}
+.vx .case-card-grid .case-meta{gap:10px;margin:0;padding:16px 0}
+.vx .case-card-grid .case-meta>div{padding-right:8px}
+.vx .case-card-grid .case-meta dt{min-height:34px;font-size:12px}
+.vx .case-card-grid .case-meta dd{font-size:15px;font-weight:600}
+.vx .case-card-grid .case-button{margin-top:auto;width:100%;padding:14px 16px;font-size:12px;min-height:50px}
+.vx .case-card-grid .tag{font-size:12px;line-height:1.5}
+@media(min-width:768px) and (max-width:1023px){.vx .case-card-grid{grid-template-columns:1fr;gap:18px}.vx .case-card-grid .case-card{display:grid;grid-template-columns:.9fr 1.1fr}.vx .case-card-grid .case-cover{min-height:0}.vx .case-card-grid .case-meta dt{min-height:0}}
+@media(max-width:767px){.vx .case-card-grid{grid-template-columns:1fr;gap:18px}.vx .case-card-grid .case-cover{padding:22px;min-height:0;gap:12px}.vx .case-card-grid .case-cover h3{font-size:25px}.vx .case-card-grid .case-summary{padding:22px;gap:14px}.vx .case-card-grid .case-card-title{font-size:28px}.vx .case-card-grid .case-meta dt{min-height:0}.vx .case-card-grid .tag{font-size:12px}}

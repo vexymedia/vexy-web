@@ -12,6 +12,14 @@ const nextConfig: NextConfig = {
           source: "/case-studies/cybersecurity",
           destination: "/vexy/cybersecurity.html",
         },
+        {
+          source: "/case-studies/erp",
+          destination: "/vexy/erp.html",
+        },
+        {
+          source: "/case-studies/industrial-maintenance",
+          destination: "/vexy/industrial-maintenance.html",
+        },
       ],
       afterFiles: [],
       fallback: [],
