@@ -1,6 +1,6 @@
 /* Cybersecurity case study: shared card and detail, using the existing VEXY palette. */
 .case-section{padding:92px 0;background:#EEF5F1;border-top:1px solid #D7E4DD;border-bottom:1px solid #D7E4DD}
-.case-section .sec-head{max-width:850px;margin-bottom:36px}
+.case-section .sec-head{max-width:850px;margin-bottom:36px;align-items:flex-start}
 .case-section .lead{font-size:20px}
 .case-card{display:grid;grid-template-columns:1.05fr 1fr;border:1px solid #9CAC9F;border-radius:14px;overflow:hidden;background:#fff;text-decoration:none;color:#111;box-shadow:0 12px 35px -26px #193E2D;transition:box-shadow .2s ease,transform .2s ease}
 .case-card:hover{color:#111;transform:translateY(-3px);box-shadow:0 20px 42px -25px #193E2D}
