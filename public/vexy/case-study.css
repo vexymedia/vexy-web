@@ -116,3 +116,59 @@
 .cs-brief dd{font-size:16px;line-height:1.6;color:#3B4840}
 @media(max-width:767px){.cs-results{padding:46px 0}.cs-results-heading{grid-template-columns:1fr;gap:18px}.cs-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.cs-stats>div{padding:20px}.cs-stats dd{font-size:38px}.cs-stats dt{font-size:11px;min-height:32px}.cs-stats p{font-size:13px}.cs-brief{padding:22px}.cs-brief dl>div{grid-template-columns:1fr;gap:6px}}
 @media(max-width:359px){.cs-stats{grid-template-columns:1fr}.cs-stats dt{min-height:0}.cs-model-label{font-size:10px!important}}
+
+/* Compact landing page: fit strip, three steps and one campaign card. */
+.vx .fit-compact{display:flex;align-items:center;justify-content:space-between;gap:32px;padding-top:22px;padding-bottom:22px}
+.vx .fit-compact-title{font-size:18px;font-weight:600;line-height:1.35;letter-spacing:-.02em;max-width:330px}
+.vx .fit-criteria{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:14px 24px;list-style:none;margin:0;padding:0}
+.vx .fit-criteria li{display:flex;align-items:center;gap:8px;font-size:13px;line-height:1.4;color:#3B4840}
+.vx .fit-criteria li::before{content:'✓';color:#08714D;font-weight:700}
+.vx #how .mech{margin-top:36px}
+.vx #how .zone{width:100%}
+.vx .case-section{padding:64px 0}
+.vx .case-section .sec-head{margin-bottom:28px}
+.vx .case-section .h2{font-size:clamp(32px,3.5vw,48px)}
+.vx .case-cover,.vx .case-summary{padding:32px}
+.vx .case-summary{gap:16px}
+.vx .case-cover h3{font-size:36px;margin-top:18px}
+.vx .case-card-title{font-size:32px}
+.vx .case-description{font-size:16px}
+.vx .case-preview-icon{width:44px;height:44px}
+.vx .case-preview-icon svg{width:18px;height:18px}
+.vx .case-wave{height:44px}
+.vx .case-preview-caption{font-size:12px}
+.vx .case-card .case-meta{padding:16px 0}
+.vx .final{padding-top:56px}
+.vx .final .h2{font-size:clamp(34px,4vw,56px)}
+.vx .final .lead{font-size:18px;margin-top:18px}
+.vx .final .cta-row{margin-top:24px}
+
+/* Monthly totals are the same illustrative dataset as the CRM screenshots. */
+.cs-monthly{margin-top:28px;overflow-x:auto;border:1px solid #C6D9CD;border-radius:12px;background:#FFF}
+.cs-monthly table{width:100%;min-width:760px;border-collapse:collapse;text-align:left;font-variant-numeric:tabular-nums}
+.cs-monthly caption{text-align:left;font-size:14px;font-weight:600;padding:18px 20px;background:#F7FAF9}
+.cs-monthly th,.cs-monthly td{padding:14px 20px;border-top:1px solid #D7E4DD;font-size:14px}
+.cs-monthly thead th{font-family:'Geist Mono',ui-monospace,monospace;text-transform:uppercase;font-size:11px;font-weight:500;line-height:1.5;color:#59665F}
+.cs-monthly tbody th{font-weight:500;white-space:nowrap}
+.cs-monthly tfoot{font-weight:700;background:#E8F7EF}
+
+/* Optional meeting-value calculator at the end of the campaign detail. */
+.cs-calculator{padding:64px 0;background:#F7FAF9;border-top:1px solid #D7E4DD}
+.cs-calculator-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:start}
+.cs-calculator-intro .cs-heading{margin-top:20px}
+.cs-calculator-intro>p{font-size:18px;color:#3B4840;margin-top:20px;line-height:1.65}
+.cs-page .cs-calculator-note{font-size:14px;line-height:1.6;color:#59665F;margin-top:16px}
+.cs-value-calc{padding:24px;border:1px solid #76B99B;border-radius:14px;background:#FFF}
+.cs-value-input{padding:18px 0;border-bottom:1px solid #D7E4DD}
+.cs-value-input:first-child{padding-top:0}
+.cs-value-label{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.cs-value-label label{font-size:15px;line-height:1.45;color:#3B4840;max-width:260px}
+.cs-value-label output{font-size:22px;line-height:1.15;font-weight:700;letter-spacing:-.02em;white-space:nowrap;font-variant-numeric:tabular-nums}
+.cs-value-input input{display:block;width:100%;height:32px;margin:12px 0 0;accent-color:#08714D;cursor:pointer}
+.cs-value-result{margin-top:24px;padding:24px;background:#DDF7EA;border:1px solid #76B99B;border-radius:10px}
+.cs-value-result output{display:block;font-size:clamp(38px,4vw,56px);line-height:1.1;letter-spacing:-.04em;font-weight:700;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.cs-value-result p{font-size:15px;line-height:1.5;color:#244535;margin-top:12px}
+.cs-page .cs-value-formula{margin-top:18px;color:#59665F;font-variant-numeric:tabular-nums}
+@media(max-width:900px){.vx .fit-compact{align-items:flex-start;gap:24px}.vx .fit-criteria{gap:12px 18px}.cs-calculator-grid{gap:32px}}
+@media(max-width:767px){.vx .fit-compact{flex-direction:column;gap:14px;padding-top:20px;padding-bottom:20px}.vx .fit-compact-title{font-size:17px;max-width:420px}.vx .fit-criteria{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 24px;justify-content:start}.vx .fit-criteria li{font-size:12px}.vx .case-section{padding:46px 0}.vx .case-cover,.vx .case-summary{padding:26px}.vx .case-cover h3{font-size:32px}.vx .case-card-title{font-size:28px}.vx .final{padding-top:46px}.vx .final .lead{font-size:16px}.cs-calculator{padding:46px 0}.cs-calculator-grid{grid-template-columns:1fr;gap:28px}.cs-calculator-intro>p{font-size:17px}.cs-value-calc{padding:22px}.cs-value-label output{font-size:20px}.cs-monthly th,.cs-monthly td{padding:12px 16px}}
+@media(max-width:359px){.vx .case-cover,.vx .case-summary{padding:22px}.cs-value-label{flex-direction:column;gap:8px}}
