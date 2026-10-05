@@ -26,8 +26,6 @@
     document.getElementById('meeting-margin-value').textContent = marginValue + '%';
     document.getElementById('meeting-close-value').textContent = closeValue + '%';
     document.getElementById('meeting-value-result').textContent = money.format(grossProfit);
-    document.getElementById('meeting-value-formula').textContent =
-      `${money.format(revenueValue)} × ${marginValue}% × ${closeValue}%`;
 
     revenue.setAttribute('aria-valuetext', money.format(revenueValue));
     margin.setAttribute('aria-valuetext', marginValue + ' percent');
