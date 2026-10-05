@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
           source: "/",
           destination: "/vexy/index.html",
         },
+        {
+          source: "/case-studies/cybersecurity",
+          destination: "/vexy/cybersecurity.html",
+        },
       ],
       afterFiles: [],
       fallback: [],
