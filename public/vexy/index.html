@@ -19,7 +19,7 @@
    videoPoster: optional real video-frame image URL or local path. */
 window.VEXY_CONFIG = Object.freeze({
   bookingUrl: "https://calendly.com/vojtechsustal7/schuzka?month=2026-10",
-  videoUrl: "https://www.youtube-nocookie.com/embed/0fa6xLuxhJ8",
+  videoUrl: "https://www.youtube-nocookie.com/embed/FYvsYEB5bDc",
   videoPoster: ""
 });
 </script>
@@ -948,7 +948,7 @@ body{margin:0}
     const host = url.hostname.toLowerCase();
     if ((host === 'www.youtube-nocookie.com' || host === 'www.youtube.com' || host === 'youtube.com') && /^\/embed\/[A-Za-z0-9_-]+$/.test(url.pathname)) {
       url.hostname = 'www.youtube-nocookie.com';
-      url.searchParams.set('autoplay','1');
+      url.searchParams.set('autoplay','0');
       url.searchParams.set('rel','0');
       return {type:'embed',url:url.href};
     }
